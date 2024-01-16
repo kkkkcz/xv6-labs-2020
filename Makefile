@@ -36,6 +36,7 @@ OBJS = \
   $K/kernelvec.o \
   $K/plic.o \
   $K/virtio_disk.o \
+  $K/vmcopyin.o \
 
 ifeq ($(LAB),pgtbl)
 OBJS += $K/vmcopyin.o
@@ -149,7 +150,15 @@ UPROGS=\
 	$U/_grind\
 	$U/_wc\
 	$U/_zombie\
-
+	$U/_copy\
+	$U/_pipe_test\
+	$U/_my_echo\
+	$U/_sleep\
+	$U/_pingpong\
+	$U/_primes\
+	$U/_find\
+	$U/_uptime\
+	$U/_trace\
 
 ifeq ($(LAB),syscall)
 UPROGS += \

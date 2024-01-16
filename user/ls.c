@@ -3,6 +3,7 @@
 #include "user/user.h"
 #include "kernel/fs.h"
 
+/* (my note)Get filename from path */
 char*
 fmtname(char *path)
 {
@@ -42,11 +43,11 @@ ls(char *path)
   }
 
   switch(st.type){
-  case T_FILE:
+  case T_FILE:  /* (my note) Address file type */
     printf("%s %d %d %l\n", fmtname(path), st.type, st.ino, st.size);
     break;
 
-  case T_DIR:
+  case T_DIR:   /* (my note) Address dir type */
     if(strlen(path) + 1 + DIRSIZ + 1 > sizeof buf){
       printf("ls: path too long\n");
       break;

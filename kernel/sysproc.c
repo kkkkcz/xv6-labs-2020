@@ -95,3 +95,14 @@ sys_uptime(void)
   release(&tickslock);
   return xticks;
 }
+
+// click the sys call number in p->tracemask
+// so as to tracing its calling afterwards
+uint64 
+sys_trace(void) {
+  int trace_sys_mask;
+  if (argint(0, &trace_sys_mask) < 0)   // argint:调用argraw函数读取寄存器a0，RISCV习惯把参数压入到这个寄存器
+    return -1;
+  myproc()->tracemask |= trace_sys_mask;
+  return 0;
+}
